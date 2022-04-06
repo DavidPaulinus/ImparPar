@@ -10,8 +10,8 @@ public class SistemaImparPar {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		int num;
-		String letra;
+		int num,result;
+		String letra, strg="Resultado";
 		gerador.generateRandomIntIntRange(0, 10);
 		
 		System.out.print("Ímpar [i] ou par [p]? ");
@@ -23,13 +23,22 @@ public class SistemaImparPar {
 			num=sc.nextInt();
 		
 			if (num<0 || num>10) {
-			System.out.println("Opa, eu falei de 0 até 10, parceiro. Esse número aí é inválido");
+			System.out.println("Opa, eu falei de 0 até 10, parceiro. Esse número aí é inválido.");
 			}
+			
 			else {
-				int result = num + gerador.generateRandomIntIntRange(0, 10);
+				result = num + gerador.generateRandomIntIntRange(0, 10);
 			
-				System.out.println("Resultado: " + result);
+				System.out.printf("%-13s%03d%n", strg, result);
 			
+				/*"%s ->pra texto, 13->denota q a string tem no minimo 13 espaços, 
+				'-' -> indica que a string tem que estar na esquerda/começo da tela*/
+				
+				/*%d -> pra inteiros, 0 -> indica que o int vai ser preenchida com 0 antes, 
+				3-> a int tem que ter no mínimo 3 espaços*/
+				
+				//%n ->quebra de linha
+				
 				if (letra.equalsIgnoreCase("i") && result%2==1) {
 					System.out.println("Parabéns!!! Deu ímpar mesmo");
 				}
@@ -46,7 +55,8 @@ public class SistemaImparPar {
 					System.out.println("Deu ímpar, mals ae ;-;");
 				}
 			}
-		}else {
+		}
+		else {
 			System.out.println("Mano, eu falei [i] ou [p]. Essa opção aí é inválida, deixa de ser retardado.");
 		}
 		sc.close();
